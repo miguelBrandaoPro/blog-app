@@ -1,21 +1,23 @@
 import { Component } from '@angular/core';
-import { Post } from "./post";
+import * as firebase from 'firebase';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  posts: Post[] =[
-      new Post('Premier post', 'contenu du premier post', 1),
-      new Post('Deuxième post', 'Lorem ipsum du 2ème post', -1),
-      new Post('Et un dernier post', 'Lorem ipsum du dernier post', 8)
-  ];
+export class AppComponent{
 
-  test = "Bob";
+    constructor(){
+        const config = {
+            apiKey: 'AIzaSyCJaZnU73_V532Lz-ImF1QLk-DBDl2MtlY',
+            authDomain: 'my-book-shelves.firebaseapp.com',
+            databaseURL: 'https://my-book-shelves.firebaseio.com',
+            projectId: 'my-book-shelves',
+            storageBucket: 'my-book-shelves.appspot.com',
+            messagingSenderId: '876630594737'
+        };
+        firebase.initializeApp(config);
+    }
 
-  constructor(){
-
-  }
 }
